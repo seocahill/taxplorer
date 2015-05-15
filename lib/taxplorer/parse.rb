@@ -9,7 +9,7 @@ module Taxplorer
     private
 
     def parse_taxonomy_files
-      Dir.glob("./taxonomies/uk-gaap/**/*.xsd") do |file|
+      Dir.glob("../dataxonomies/uk-gaap/**/*.xsd") do |file|
         parsed_file = Nokogiri::XML(File.open(file))
         add_sections(parsed_file)
         add_elements(parsed_file)
