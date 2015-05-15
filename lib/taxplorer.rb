@@ -1,12 +1,12 @@
 #!/usr/bin/env ruby
 
-# require "nokogiri"
+require "nokogiri"
 require "taxplorer/command"
 require "taxplorer/parse"
 require "taxplorer/find"
 require "taxplorer/view"
-# require 'hirb'
-# require 'highline/import'
+require 'hirb'
+require 'highline/import'
 
 class Application
   include Taxplorer::Command
