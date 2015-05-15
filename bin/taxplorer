@@ -1,8 +1,4 @@
 #!/usr/bin/env ruby
 
 require 'taxplorer'
-
-chatter = Taxplorer::Chatter.new
-chatter.say_hello
-# puts Hola.hi(ARGV[0])
-
+Application.new
