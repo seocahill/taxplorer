@@ -48,7 +48,8 @@ module Taxplorer
     end
 
     def node_commands(node)
-      cmd = ask("Enter command:  ", %w{info children parent menu help quit}) {|q| q.readline = true}
+      puts "Viewing #{node}"
+      cmd = ask("Enter command:  ", %w{info children parent menu tree quit}) {|q| q.readline = true}
       case cmd
       when "info"
         get_info(node)
@@ -57,9 +58,12 @@ module Taxplorer
       when "parent"
         get_parent(node)
       when "menu"
-        get_sections
-      when "help"
-        say("you don't need help")
+        menu_prompt
+      when "tree"
+        clear
+        tree_view(node)
+        puts "\n\n"
+        node_commands(node)
       when "quit"
         quit
       end

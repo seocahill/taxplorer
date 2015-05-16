@@ -9,17 +9,15 @@ module Taxplorer
       end
     end
 
-    def section_tree(query)
-      @current_section = @records["sections"].find {|s| s[:name] == query}
-      @current_section[:elements].select {|e| e[:parent] == nil}.map do |node|
-        [node[:label], child_tree(node)]
-      end
-    end
-
-    def child_tree(node)
-      @current_section[:elements].select {|e| e[:parent] == node[:label]}.map do |child|
-        [child[:label], child_tree(child)]
+    def tree_view(node, links="")
+      children = @section[:elements].values.select {|e| e[:parent] == node}
+      puts links + node
+      links = links + "  "
+      children.map do |child|
+        tree_view(child[:label], links)
       end
     end
   end
 end
+
+

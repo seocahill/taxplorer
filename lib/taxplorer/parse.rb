@@ -1,15 +1,20 @@
 module Taxplorer
   module Parse
+
+    Node = Struct.new(:label, :parent, :copies)
+
     def load_taxonomy
-      parse_taxonomy_files
-      parse_presentation_files
+      unless @records["sections"].any?
+        parse_taxonomy_files
+        parse_presentation_files
+      end
       menu_prompt
     end
 
     private
 
     def parse_taxonomy_files
-      Dir.glob("../dataxonomies/uk-gaap/**/*.xsd") do |file|
+      Dir.glob("./taxonomies/uk-gaap/**/*.xsd") do |file|
         parsed_file = Nokogiri::XML(File.open(file))
         add_sections(parsed_file)
         add_elements(parsed_file)
@@ -26,7 +31,7 @@ module Taxplorer
       roles = parsed_file.xpath("//link:roleType")
       roles.each_with_index do |role, index|
         if role.xpath("link:usedOn").text == "link:presentationLink"
-          @records["sections"] << {name: role.xpath("link:definition").text, role_uri: role.attributes["roleURI"].value, elements: []}
+          @records["sections"] << {name: role.xpath("link:definition").text, role_uri: role.attributes["roleURI"].value, elements: Hash.new}
         end
       end
     end
@@ -68,22 +73,18 @@ module Taxplorer
       info
     end
 
-    def create_node(elements, node)
-      unless elements.find {|e| e[:label] == node.attributes["label"].value}
-        el = Hash.new
-        el[:label] = node.attributes["label"].value
-        elements << el
-      end
+    def create_node(elements, loc)
+      node = Node.new(loc.attributes["label"].value, nil, 1)
+      elements[node.label] ||= node
     end
 
-    def upsert_node(elements, node)
-      els = elements.select {|e| e[:label] == node.attributes["to"].value}
-      els.each do |el|
-        if el
-          el[:parent] = node.attributes["from"].value
-        else
-          elements << {label: node.attributes["to"].value, parent: node.attributes["from"].value}
-        end
+    def upsert_node(elements, arc)
+      node = elements[arc.attributes["to"].value]
+      if node and node.parent
+        node.copies += 1
+        elements[node.label + "-#{node.copies}"] = Node.new(arc.attributes["to"].value, arc.attributes["from"].value)
+      else
+        node.parent = arc.attributes["from"].value
       end
     end
 

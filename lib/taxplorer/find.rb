@@ -7,7 +7,7 @@ module Taxplorer
 
     def get_section(section_name)
       @section = @records["sections"].find {|s| s[:name] == section_name}
-      @section[:elements].select {|e| e[:parent] == nil}
+      @section[:elements].values.select {|e| e.parent == nil}
     end
 
     def get_info(node_label)
@@ -17,8 +17,8 @@ module Taxplorer
     end
 
     def get_parent(node)
-      child = @section[:elements].find {|e| e[:label] == node}
-      parent = @section[:elements].find {|p| p[:label] == child[:parent]} if child
+      child = @section[:elements].values.find {|e| e[:label] == node}
+      parent = @section[:elements].values.find {|p| p[:label] == child[:parent]} if child
       if parent
         node_commands(parent[:label])
       else
@@ -27,8 +27,8 @@ module Taxplorer
     end
 
     def get_children(node_id)
-      node = @section[:elements].find {|e| e[:label] == node_id}
-      nodes = @section[:elements].select {|e| e[:parent] == node_id}
+      node = @section[:elements].values.find {|e| e[:label] == node_id}
+      nodes = @section[:elements].values.select {|e| e[:parent] == node_id}
       if nodes.any?
         child_nodes_prompt(nodes)
       else
