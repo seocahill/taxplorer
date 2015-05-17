@@ -3,11 +3,11 @@ module Taxplorer
 
     Node = Struct.new(:label, :parent, :copies)
 
+    @pinwheel = %w{ | / - \\ }
+
     def load_taxonomy
-      unless @records["sections"].any?
-        parse_taxonomy_files
-        parse_presentation_files
-      end
+      parse_taxonomy_files
+      parse_presentation_files
       menu_prompt
     end
 

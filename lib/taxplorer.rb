@@ -21,7 +21,6 @@ class Application
     @records["sections"] ||= []
     @records["elements"] ||= []
     @run = true
-    @pinwheel = %w{ | / - \\ }
     load_shell
   end
 end
