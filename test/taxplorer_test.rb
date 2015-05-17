@@ -2,13 +2,18 @@ require 'test_helper'
 require 'taxplorer'
 
 class TestTaxplorer < Minitest::Test
-  # def setup
-  #   @app = Taxplorer.new
-  # end
 
-  def test_welcome_prompt
-    Dir.glob("data/taxonomies/uk-gaap/**/*.xsd") do |file|
-        puts file
+  module Taxplorer::Command
+    def load_shell
+      return true
     end
+  end
+
+  def test_app_initialization
+    app = Application.new
+    assert_equal [], app.records["sections"]
+    assert_equal [], app.records["elements"]
+    assert app.run
+    assert_send [app, :load_shell], "didn't load the shell"
   end
 end
