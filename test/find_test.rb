@@ -37,10 +37,14 @@ class TestFind < Minitest::Test
     assert_equal @mockapp.get_parent("uk-aurep_AuditorInformationHeading"), "menu"
   end
 
-  # def test_get_children
-  #   @mockapp.get_section("06 - Auditor's Report")
-  #   assert_equal @mockapp.get_parent("uk-aurep_DateAuditorsReport"), "command"
-  #   assert_equal @mockapp.get_parent("uk-aurep_AuditorInformationHeading"), "menu"
-  # end
+  def test_get_children
+    @mockapp.get_section("06 - Auditor's Report")
+    assert_equal @mockapp.get_children("uk-aurep_DateAuditorsReport"), "command"
+    assert_equal @mockapp.get_children("uk-aurep_AuditorInformationHeading"), "child_prompt"
+  end
 
+  def test_get_info
+    assert_output(/xbrli:dateItemType/){ @mockapp.get_info("uk-aurep_DateAuditorsReport") }
+    assert_equal @mockapp.get_info("uk-aurep_DateAuditorsReport"), "command"
+  end
 end
