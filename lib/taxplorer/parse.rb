@@ -3,7 +3,7 @@ module Taxplorer
 
     Node = Struct.new(:label, :parent, :copies)
 
-    @pinwheel = %w{ | / - \\ }
+    @@pinwheel = %w{ | / - \\ }
 
     def load_taxonomy
       parse_taxonomy_files
@@ -41,7 +41,7 @@ module Taxplorer
       elements.each_with_index do |element, i|
         id = element.attributes["id"] ? element.attributes["id"].value : nil
         @records["elements"] << {id: id, details: add_details(element)}
-        STDOUT.write "\rAdding elements #{percentage(i, elements)}% " + @pinwheel.rotate!.first
+        STDOUT.write "\rAdding elements #{percentage(i, elements)}% " + @@pinwheel.rotate!.first
       end
     end
 
@@ -60,7 +60,7 @@ module Taxplorer
         elsif node.name == "presentationArc"
           upsert_node(section[:elements], node)
         end
-        STDOUT.write "\rBuilding #{p_link.attributes["role"].value} tree #{percentage(i, nodes)}% " + @pinwheel.rotate!.first
+        STDOUT.write "\rBuilding #{p_link.attributes["role"].value} tree #{percentage(i, nodes)}% " + @@pinwheel.rotate!.first
       end
       clear
     end
