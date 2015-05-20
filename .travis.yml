@@ -1,8 +1,13 @@
 language: ruby
 cache: bundler
-
 rvm:
-  - 2.2.0
-
-script: 'bundle exec rake'
-
+- 2.2.0
+script: bundle exec rake
+deploy:
+  provider: rubygems
+  api_key:
+    secure: gal+ARdZmJNcgzl00TMCHXW495xQvCWbckrhLlzE+XmbBJ9l7VOhiE2NITS0M3nYKJ9msnTCwD/uhuZK/0mcY67mcttz0AfxNPmOR4kn1D4lCRRfbVuCQMnPabO3xiv32VVN/IwqW6E/0XvSOoeRLqU9vjKc19vh/qjMx/Rwkdl6xmsjZoJQf1kstoJfZqSG8ayDuVbhY8dHmQ+XZI1TXXs5n/EYFMkXW8fBDtshGeAofzvL8pM6HutEqG791EM0NeUBUpYBXNEFZ/aGfh+rhFYbhwoS+QKnQ627CzpYwHDjzTsm4CJ8+OiE5ig2Pf5St7rOPj8iPNsdflxNZ0eyG3KnU4g+Sy91lCiGv76QtXkI5hP2APVeqpL5wkvFlZjiJTB/2hHewJsafi8+DeZgCde/a77UlF0zHci40u90h1a9eI8p7Bdgtn9MIckuLSitwRi85oD7hgGzQrfj1Qh8nCEYKNzQVs4Tluj2uTD3TPPanID0XDcis7HD20/ga7E/iCC6HP6rEa4n66eoWGEM3KWYuvPiadv7vVBA7BBCI417lThhcPMgbDSrGQfrflAvrrBJdOmPIn6gacT2nYSnl4nL+7yyl1sRmEh+B6+e2z4W7HX+l3EjQwg80Hjs/0HgZAWA70IDIeSVscv8ZhX+OGpsaIEOXdMPIV2YND3zJAc=
+  gem: taxplorer
+  on:
+    tags: true
+    repo: seocahill/taxplorer
