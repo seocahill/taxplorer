@@ -2,8 +2,8 @@ require 'test_helper'
 require 'taxplorer'
 
 class TestFind < Minitest::Test
-  @@taxonomy_file = Nokogiri::XML(File.open('data/taxonomies/uk-gaap/xsds/uk-aurep-2009-09-01.xsd'))
-  @@presentation_file = Nokogiri::XML(File.open('data/taxonomies/uk-gaap/presentation/uk-aurep-2009-09-01-presentation.xml'))
+  @@taxonomy_file = Nokogiri::XML(File.open(Gem.datadir('taxplorer') + '/taxonomies/uk-gaap/xsds/uk-aurep-2009-09-01.xsd'))
+  @@presentation_file = Nokogiri::XML(File.open(Gem.datadir('taxplorer') + '/taxonomies/uk-gaap/presentation/uk-aurep-2009-09-01-presentation.xml'))
 
   def setup
     @mockapp = Class.new do
