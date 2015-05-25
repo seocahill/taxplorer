@@ -1,6 +1,10 @@
 # Taxplorer
 
-TODO: Write a gem description
+[![Build Status](https://travis-ci.org/seocahill/taxplorer.svg?branch=v0.1.4)](https://travis-ci.org/seocahill/taxplorer) [![Coverage Status](https://coveralls.io/repos/seocahill/taxplorer/badge.svg?branch=master)](https://coveralls.io/r/seocahill/taxplorer?branch=master)
+
+Taxplorer is a command line tool to view the content of XBRL taxonomy Schemas.
+
+At the moment only UK GAAP / IFRS is supported
 
 ## Installation
 
@@ -12,15 +16,15 @@ gem 'taxplorer'
 
 And then execute:
 
-    $ bundle
+    $ taxplorer
 
 Or install it yourself as:
 
     $ gem install taxplorer
 
 ## Usage
-
-TODO: Write usage instructions here
+    
+![Taxplorer gif](https://s3.eu-central-1.amazonaws.com/gen-images/taxplorer.gif)
 
 ## Contributing
 
