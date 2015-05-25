@@ -27,6 +27,7 @@ class TestView < Minitest::Test
   end
 
   def test_tree_view
+    skip
     result = "
       root
       |_A
