@@ -2,6 +2,9 @@ language: ruby
 cache: bundler
 rvm:
 - 2.2.0
+addons:
+  code_climate:
+    repo_token: 3f2b44ddcc90fae571ed9c4aaecff0d7dd26cb2ecca8f74f32c62c43d74a6ff6
 script: bundle exec rake
 deploy:
   provider: rubygems
