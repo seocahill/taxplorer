@@ -1,6 +1,9 @@
 # Taxplorer
 
-[![Build Status](https://travis-ci.org/seocahill/taxplorer.svg?branch=v0.1.4)](https://travis-ci.org/seocahill/taxplorer) [![Coverage Status](https://coveralls.io/repos/seocahill/taxplorer/badge.svg?branch=master)](https://coveralls.io/r/seocahill/taxplorer?branch=master)
+[![Gem Version](https://badge.fury.io/rb/taxplorer.svg)](http://badge.fury.io/rb/taxplorer)
+[![Build Status](https://travis-ci.org/seocahill/taxplorer.svg?branch=master)](https://travis-ci.org/seocahill/taxplorer)
+[![Code Climate](https://codeclimate.com/github/seocahill/taxplorer/badges/gpa.svg)](https://codeclimate.com/github/seocahill/taxplorer)
+[![Test Coverage](https://codeclimate.com/github/seocahill/taxplorer/badges/coverage.svg)](https://codeclimate.com/github/seocahill/taxplorer/coverage)
 
 Taxplorer is a command line tool to view the content of XBRL taxonomy Schemas.
 
