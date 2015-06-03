@@ -1,21 +1,24 @@
 module Taxplorer
   module View
 
-    def table_view(node)
-      if node[:details]
-        puts Hirb::Helpers::AutoTable.render(info[:details])
-      else
-        puts "no information"
-      end
+    def initialize
+      @nodes = []
     end
 
-    def tree_view(node, links="")
+    def build_tree(node, level)
+      leaf = {value: node, level: level}
+      @nodes << leaf
       children = @section[:elements].values.select {|e| e[:parent] == node}
-      puts links + node
-      links = links + "  "
+      level += 1
       children.map do |child|
-        tree_view(child[:label], links)
+        build_tree(child[:label], level)
       end
+      @nodes
+    end
+
+    def tree_view(node)
+      build_tree(node, 0)
+      Hirb::Helpers::Tree.render(@nodes, type: :directory)
     end
   end
 end
