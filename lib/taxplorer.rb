@@ -17,6 +17,7 @@ class Application
   attr_reader :records, :run
 
   def initialize
+    @nodes = []
     @records ||= Hash.new
     @records["sections"] ||= []
     @records["elements"] ||= []

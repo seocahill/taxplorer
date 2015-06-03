@@ -61,7 +61,7 @@ module Taxplorer
         menu_prompt
       when "tree"
         clear
-        tree_view(node)
+        puts tree_view(node)
         puts "\n\n"
         node_commands(node)
       when "quit"

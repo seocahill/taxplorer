@@ -1,10 +1,6 @@
 module Taxplorer
   module View
 
-    def initialize
-      @nodes = []
-    end
-
     def build_tree(node, level)
       leaf = {value: node, level: level}
       @nodes << leaf
@@ -17,6 +13,7 @@ module Taxplorer
     end
 
     def tree_view(node)
+      @nodes = []
       build_tree(node, 0)
       Hirb::Helpers::Tree.render(@nodes, type: :directory)
     end
