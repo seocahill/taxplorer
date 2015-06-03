@@ -4,7 +4,6 @@ require 'taxplorer'
 
 class TestView < Minitest::Test
   def setup
-
     @mockapp = Class.new do
       include Taxplorer::View
       def initialize

@@ -12,7 +12,7 @@ module Taxplorer
     def welcome_prompt
       choose do |menu|
         menu.prompt = "Choose preferred taxonomy"
-        ["Uk GAAP", "UK IFRS"].each do |t|
+        ["UK GAAP", "UK IFRS"].each do |t|
           menu.choice(t) { |c| say("have a glass of whiskey while we load up #{c} for you"); load_taxonomy }
         end
       end

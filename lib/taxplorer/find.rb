@@ -19,11 +19,7 @@ module Taxplorer
     def get_parent(node)
       child = @section[:elements].values.find {|e| e[:label] == node}
       parent = @section[:elements].values.find {|p| p[:label] == child[:parent]} if child
-      if parent
-        node_commands(parent[:label])
-      else
-        menu_prompt
-      end
+      parent ? node_commands(parent[:label]) : menu_prompt
     end
 
     def get_children(node_id)
