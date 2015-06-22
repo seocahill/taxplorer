@@ -10,7 +10,7 @@ class TestTaxplorer < Minitest::Test
   end
 
   def test_app_initialization
-    app = Application.new
+    app = Taxplorer::Application.new
     assert_equal [], app.records["sections"]
     assert_equal [], app.records["elements"]
     assert app.run

@@ -1,4 +1,4 @@
 #!/usr/bin/env ruby
 
 require 'taxplorer'
-Application.new
+Taxplorer::Application.new

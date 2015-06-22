@@ -26,7 +26,7 @@ Or install it yourself as:
     $ gem install taxplorer
 
 ## Usage
-    
+
 ![Taxplorer gif](https://s3.eu-central-1.amazonaws.com/gen-images/taxplorer.gif)
 
 ## Contributing
